@@ -4,6 +4,7 @@
 #include "sentence.h"
 #include "history.h"
 #include "voc.h"
+#include "conversation.h"
 
 void drawLine(){
 	printf("\n_______________ \n");
@@ -98,24 +99,19 @@ int main(){
 	printf("%s - %s\n",to_string(&h2),av2.category);
 	printf("%s - %s\n",to_string(&h9),av3.category);
 
-
-
+	drawLine();
+	printf("ConversationTest\n");
+	conversation cv;
+	create_conversation(&cv);
+	add_con(&cv, "Hi", "Hello", "hello");
+	add_con(&cv, "Ich mag xyz", "Nice", "do");
+	add_con(&cv, "Bist du schlau?", "Ich weiß es nicht.", "question");
+	add_con(&cv, "Du weißt es nicht?", "Maul.", "question");
+	add_con(&cv, "Wie heißt du?", "Weiß ich noch nicht", "question");
+	add_con_without_cat(&cv, "*lachen*", "Hahahaha");
 	
+	sentence out1 =  get_optimal_answer(&cv, &av2);
+	printf("%s\n",to_string(&out1));
 	
-	/*while(1){
-		char input[20*20] = "";
-		
-		printf("User: ");
-		fgets (input, 20*20, stdin);
-		scanf("%s\n", &input);
-		sentence s;
-		create_sentence(&s, input);
-		add_to_history(&h, &s);
-		if(compare_sentence_with_string(&s, "search for") > 0.5){
-			//sentence sa = search_for(&h, s.content[2]);
-			//printf("%s\n", to_string(&sa));
-		}
-		
-	}*/
 	return 0;
 }
