@@ -57,4 +57,6 @@ sentence search_for(history *h, word *w){
 	return s;
 }
 
+
+
 #endif // HISTORY_H
