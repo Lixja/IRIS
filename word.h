@@ -46,4 +46,10 @@ double compare_word(word w1, word w2){
 	return rightchars/w1_len;
 }
 
+word *to_word(char *str){
+	word *w = malloc(sizeof(word));
+	strcpy(*w, str);
+	return w;
+}
+
 #endif // WORD_H

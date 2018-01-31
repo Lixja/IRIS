@@ -34,17 +34,26 @@ void add_to_history(history *h, sentence *s){
 
 void create_history(history *h){ 
 	*h = EMPTY_HISTORY;
-	h->size = 1;
+	h->size = 0;
 	sentence s1;
 	create_sentence(&s1, "-");
 	add_to_history(h, &s1);
 	h->head = h->last;
 }
 
-sentence search_for(history *h, word w){
+sentence search_for(history *h, word *w){
 	sentence s;
 	create_sentence(&s, "Sorry Not Found");
-
+	h_node *point = h->head;
+	double r = 0.5;
+	for(int i = 1; i<h->size; i++){
+		point = point->next;
+		double r_new = contains_word(point->input, w);
+		if(r_new > r){
+			r = r_new;
+			s = *point->input;
+		}
+	}
 	return s;
 }
 

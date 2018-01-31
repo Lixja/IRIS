@@ -37,6 +37,36 @@ int main(){
 	printf("HistoryTest\n");
 	history h;
 	create_history(&h);
+	sentence h1;
+	create_sentence(&h1, "Ich bin 10 jahre alt");
+	add_to_history(&h, &h1);
+	sentence h2;
+	create_sentence(&h2, "Ich mag schnulle auto");
+	add_to_history(&h, &h2);
+	sentence h3;
+	create_sentence(&h3, "Hi");
+	add_to_history(&h, &h3);
+	sentence h4;
+	create_sentence(&h4, "Wie geht es dir?");
+	add_to_history(&h, &h4);
+	sentence h5;
+	create_sentence(&h5, "Ich habe Hunger");
+	add_to_history(&h, &h5);
+	sentence h6;
+	create_sentence(&h6, "Ich mag katzen");
+	add_to_history(&h, &h6);
+	sentence h7;
+	create_sentence(&h7, "asdfghjk");
+	add_to_history(&h, &h7);
+	
+	sentence a1 = search_for(&h, to_word("katzen"));
+	sentence a2 = search_for(&h, to_word("alter"));
+	sentence a3 = search_for(&h, to_word("schnelle"));
+	printf("%s\n", to_string(&a1));
+	printf("%s\n", to_string(&a2));
+	printf("%s\n", to_string(&a3));
+
+	
 	while(1){
 		char input[20*20] = "";
 		
@@ -47,8 +77,8 @@ int main(){
 		create_sentence(&s, input);
 		add_to_history(&h, &s);
 		if(compare_sentence_with_string(&s, "search for") > 0.5){
-			sentence sa = search_for(&h, s.content[2]);
-			printf("%s\n", to_string(&sa));
+			//sentence sa = search_for(&h, s.content[2]);
+			//printf("%s\n", to_string(&sa));
 		}
 		
 	}

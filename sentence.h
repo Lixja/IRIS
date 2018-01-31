@@ -51,6 +51,17 @@ double compare_sentence_with_string(sentence *s1, char str[]){
 	return compare_sentence(s1, &s2);
 }
 
+double contains_word(sentence *s1, word *w1){
+	double res = 0.0;
+	for(int i=0; i< s1->size; i++){
+		double w_quote = compare_word(s1->content[i], *w1);
+		if(res < w_quote){
+			res = w_quote;
+		}
+	}
+	return res;
+}
+
 char *to_string(sentence *s1){
 	char *str = malloc(sizeof(char)*20*20);
 	strcat(str, s1->content[0]);
