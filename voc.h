@@ -40,7 +40,7 @@ asentence analyse_sentence(vocabulary *v, sentence *s){
 	asentence res;
 	res.s = s;
 	voc *vc;
-	*vc = EMPTY_VOC;
+	vc = malloc(sizeof(voc));
 	double quote = 0.0;
 	for(int i=0; i<v->size; i++){
 		int n_quote = contains_word(s, &v->vocs[i].w);

@@ -23,7 +23,7 @@ static const history EMPTY_HISTORY;
 void add_to_history(history *h, sentence *s){
 	h_node *nn;
 	nn = malloc(sizeof(h_node));
-	nn->input = s;
+	copy_sentence(nn->input, s);
 	nn->prev = h->last;
 	if(h->last != NULL){
 	h->last->next = nn;

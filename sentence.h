@@ -17,6 +17,14 @@ void add_word(sentence *dest, word *src){
 	dest->size++;
 }
 
+void copy_sentence(sentence *dest, sentence *src){
+	dest = malloc(sizeof(sentence));
+	*dest = EMPTY_SENTENCE;
+	for(int i=0; i<src->size; i++){
+		strcpy(dest->content[i], src->content[i]);
+	}
+}
+
 void create_sentence(sentence *dest, char str[])
 {
 	*dest = EMPTY_SENTENCE;
